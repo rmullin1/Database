@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Database</string>
+    <string name="product_name">Product Name</string>
+    <string name="product_id">Product ID</string>
+    <string name="product_quality">Product Quality</string>
+    <string name="add">ADD</string>
+    <string name="find">FIND</string>
+    <string name="delete">DELETE</string>
+</resources>
