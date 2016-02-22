@@ -7,5 +7,7 @@
     <string name="add_string">ADD</string>
     <string name="find_string">FIND</string>
     <string name="delete_string">DELETE</string>
+    <string name="update_string">UPDATE</string>
+    <string name="deleteall_string">DELETE ALL</string>
 
 </resources>

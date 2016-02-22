@@ -33,7 +33,7 @@ public class DatabaseActivity extends AppCompatActivity {
                 new Product(productBox.getText().toString(), quantity);
 
         dbHandler.addProduct(product);
-        idView.setText("");
+        idView.setText("Record Added");
         productBox.setText("");
         quantityBox.setText("");
     }//newProduct()
@@ -69,4 +69,36 @@ public class DatabaseActivity extends AppCompatActivity {
         else
             idView.setText("No Match Found");
     }//removeProduct()(
+
+    public void updateProduct(View view) {
+
+        MyDBHandler dbHandler = new MyDBHandler(this, null, null, 1);
+
+        int quantity = Integer.parseInt(quantityBox.getText().toString());
+        Product product = new Product(productBox.getText().toString(), quantity);
+
+        boolean result = dbHandler.updateProduct(product);
+
+        if (result) {
+            idView.setText("Quantity Updated");
+        } else {
+            idView.setText("No Match Found");
+        }
+    }//updateProduct()
+
+    public void deleteAllProduct(View view) {
+        MyDBHandler dbHandler = new MyDBHandler(this, null,
+                null, 1);
+
+        boolean result = false;
+        //result = dbHandler.deleteAllProduct(
+       //         productBox.getText().toString());
+
+        if (result) {
+            idView.setText("Quantity Updated");
+        } else {
+            idView.setText("No Match Found");
+        }
+    }//deleteAllProduct()
+
 }

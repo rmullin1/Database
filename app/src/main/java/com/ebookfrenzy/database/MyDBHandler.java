@@ -55,7 +55,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
 
     public Product findProduct(String productname) {
-        String query = "Select * FROM " + TABLE_PRODUCTS + " WHERE " + COLUMN_PRODUCTNAME + " =  \"" + productname + "\"";
+        String query = "SELECT * FROM " + TABLE_PRODUCTS + " WHERE " + COLUMN_PRODUCTNAME + " =  \"" + productname + "\"";
 
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -80,7 +80,8 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
         boolean result = false;
 
-        String query = "Select * FROM " + TABLE_PRODUCTS + " WHERE " + COLUMN_PRODUCTNAME + " =  \"" + productname + "\"";
+        String query = "SELECT * FROM " + TABLE_PRODUCTS + " WHERE " + COLUMN_PRODUCTNAME +
+                " =  \"" + productname + "\"";
 
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -99,5 +100,23 @@ public class MyDBHandler extends SQLiteOpenHelper {
         return result;
     }//deleteProduct()
 
+    public boolean updateProduct(Product product) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        //values.put(COLUMN_PRODUCTNAME, product.getProductName());
+        values.put(COLUMN_QUANTITY, product.getQuantity());
+        try {
+            db.update(TABLE_PRODUCTS, values, COLUMN_PRODUCTNAME + " = " + product.getProductName(), null);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally { return true; }
+
+    }//updateProduct()
+
+    public boolean deleteAllProduct() {
+        boolean result = false;
+        //String query = "SELECT"
+        return false;
+    }//deleteAllProduct()
 
 }
