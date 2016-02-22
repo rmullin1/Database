@@ -1,9 +1,11 @@
 <resources>
     <string name="app_name">Database</string>
-    <string name="product_name">Product Name</string>
-    <string name="product_id">Product ID</string>
-    <string name="product_quality">Product Quality</string>
-    <string name="add">ADD</string>
-    <string name="find">FIND</string>
-    <string name="delete">DELETE</string>
+    <string name="prodname_string">Product Name</string>
+    <string name="not_assigned_string">Not assigned</string>
+    <string name="prodid_string">Product ID</string>
+    <string name="quantity_text">Product Quality</string>
+    <string name="add_string">ADD</string>
+    <string name="find_string">FIND</string>
+    <string name="delete_string">DELETE</string>
+
 </resources>
