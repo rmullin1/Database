@@ -1,6 +1,3 @@
-/**
- * Created by Wayne on 2/22/2016.
- */
 
 package com.ebookfrenzy.database;
 
@@ -104,18 +101,23 @@ public class MyDBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         //values.put(COLUMN_PRODUCTNAME, product.getProductName());
+        //values.put(COLUMN_QUANTITY, String.valueOf(product.getQuantity()));
         values.put(COLUMN_QUANTITY, product.getQuantity());
+        boolean success = false;
         try {
-            db.update(TABLE_PRODUCTS, values, COLUMN_PRODUCTNAME + " = " + product.getProductName(), null);
+            success = db.update(TABLE_PRODUCTS, values, COLUMN_PRODUCTNAME + " = \"" + product.getProductName() + "\"", null) != 0;
+            return success;
         } catch (Exception ex) {
             ex.printStackTrace();
-        } finally { return true; }
+            return success;
+        }
 
     }//updateProduct()
 
     public boolean deleteAllProduct() {
-        boolean result = false;
-        //String query = "SELECT"
+        SQLiteDatabase db = this.getWritableDatabase();
+        if (db.delete(TABLE_PRODUCTS, "1", null) > 0)
+            return true;
         return false;
     }//deleteAllProduct()
 

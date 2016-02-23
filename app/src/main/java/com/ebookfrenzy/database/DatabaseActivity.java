@@ -73,6 +73,8 @@ public class DatabaseActivity extends AppCompatActivity {
     public void updateProduct(View view) {
 
         MyDBHandler dbHandler = new MyDBHandler(this, null, null, 1);
+        if (productBox.getText().length() == 0 || quantityBox.getText().length() == 0)
+            return;
 
         int quantity = Integer.parseInt(quantityBox.getText().toString());
         Product product = new Product(productBox.getText().toString(), quantity);
@@ -87,17 +89,14 @@ public class DatabaseActivity extends AppCompatActivity {
     }//updateProduct()
 
     public void deleteAllProduct(View view) {
-        MyDBHandler dbHandler = new MyDBHandler(this, null,
-                null, 1);
-
-        boolean result = false;
-        //result = dbHandler.deleteAllProduct(
-       //         productBox.getText().toString());
-
-        if (result) {
-            idView.setText("Quantity Updated");
+        MyDBHandler dbHandler = new MyDBHandler(this, null, null, 1);
+        boolean success = dbHandler.deleteAllProduct();
+        productBox.setText("");
+        quantityBox.setText("");
+        if (success) {
+            idView.setText("All Products Deleted");
         } else {
-            idView.setText("No Match Found");
+            idView.setText("No Products Found");
         }
     }//deleteAllProduct()
 
